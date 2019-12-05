@@ -3,9 +3,9 @@ pipeline {
         // set a timeout of 30 minutes for this pipeline
       //  timeout(time: 30, unit: 'MINUTES')
     //}
-    tools {
-     maven 'mvn'
-     }
+    //tools {
+     //maven 'mvn'
+     //}
     agent any
      environment {
         giturl = "https://github.com/skadian2309/example-health-jee-openshift.git"
