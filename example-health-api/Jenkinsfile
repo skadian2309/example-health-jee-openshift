@@ -1,17 +1,28 @@
 pipeline {
-    options {
+    //options {
         // set a timeout of 30 minutes for this pipeline
-        timeout(time: 30, unit: 'MINUTES')
-    }
-    agent {
-      node {
-        label 'master'
-      }
-    }
+      //  timeout(time: 30, unit: 'MINUTES')
+    //}
+    tools {
+     maven 'mvn'
+     }
+    agent any
+     environment {
+        giturl = "https://github.com/skadian2309/example-health-jee-openshift.git"
+        projectName = "sumitkadian-11249"
+      }  
 
     stages {
+        stage('Build App') {        
+           steps {
+              git url: env.giturl
+              script{      
+                  sh "mvn install -DskipTests=true"    
+              }
+            }
+           }    
 
-        stage('stage 1') {
+        stage('Step1') {
             steps {
                 script {
                     openshift.withCluster() {
