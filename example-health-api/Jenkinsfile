@@ -19,7 +19,7 @@ pipeline {
            steps {
               git url: env.giturl
               script{      
-                  sh "mvn install -DskipTests=true"    
+                  sh "cd example-health-api;mvn install -DskipTests=true"    
               }
             }
            }    
