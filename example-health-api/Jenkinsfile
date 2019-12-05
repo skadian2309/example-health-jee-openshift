@@ -6,7 +6,9 @@ pipeline {
     //tools {
      //maven 'mvn'
      //}
-    agent any
+    agent {
+      label 'maven'
+    }
      environment {
         giturl = "https://github.com/skadian2309/example-health-jee-openshift.git"
         projectName = "sumitkadian-11249"
